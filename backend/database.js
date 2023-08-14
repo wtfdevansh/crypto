@@ -120,8 +120,32 @@ app.post("/trade", async (req, resp) => {
 
   async function myfunction(){
       
-    if(amount >= 50000 ){
-     const profit = -50000 
+    if(amount === 3000 ){
+     const profit = -2300 
+  
+     let docs = await User.findOneAndUpdate({ email: req.body.email  },  {$push: {closed: {item: req.body.item,amount: req.body.money,direction: req.body.direction,time: req.body.time,buyat: buyprice,closeat: buyprice + profit,profit: profit}}});
+     const newfund = docs.funds + profit;
+     let docss = await User.findOneAndUpdate({ email: req.body.email  },  {funds: newfund});
+
+
+    }else if(amount === 5000){
+     const profit = -3200 
+  
+     let docs = await User.findOneAndUpdate({ email: req.body.email  },  {$push: {closed: {item: req.body.item,amount: req.body.money,direction: req.body.direction,time: req.body.time,buyat: buyprice,closeat: buyprice + profit,profit: profit}}});
+     const newfund = docs.funds + profit;
+     let docss = await User.findOneAndUpdate({ email: req.body.email  },  {funds: newfund});
+
+
+    }else if(amount === 10000 ){
+     const profit = 50000
+  
+     let docs = await User.findOneAndUpdate({ email: req.body.email  },  {$push: {closed: {item: req.body.item,amount: req.body.money,direction: req.body.direction,time: req.body.time,buyat: buyprice,closeat: buyprice + profit,profit: profit}}});
+     const newfund = docs.funds + profit;
+     let docss = await User.findOneAndUpdate({ email: req.body.email  },  {funds: newfund});
+
+
+    }else if(amount === 15000 ){
+     const profit = -75000
   
      let docs = await User.findOneAndUpdate({ email: req.body.email  },  {$push: {closed: {item: req.body.item,amount: req.body.money,direction: req.body.direction,time: req.body.time,buyat: buyprice,closeat: buyprice + profit,profit: profit}}});
      const newfund = docs.funds + profit;
